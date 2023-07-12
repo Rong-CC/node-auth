@@ -4,7 +4,7 @@
  * @@后台人员: xxx
  * @Date: 2023-07-04 15:50:16
  * @LastEditors: rongcheng
- * @LastEditTime: 2023-07-07 20:31:52
+ * @LastEditTime: 2023-07-12 17:38:07
  */
 const express = require('express')
 const { User } = require('../models/user')
@@ -59,20 +59,6 @@ router.post('/register', async (req, res) => {
     }
   })
   res.json({ success: true, message: '注册成功' })
-
-  console.log(user, 'user')
-  // user.save((err)=>{
-  //     if(err){
-  //         res.json({success: false, message: '注册失败'});
-  //     }
-  // })
-  // if(!user){
-  //     res.status(422).send({
-  //         message: '注册失败',
-  //         success: false
-  //     })
-  // }
-  // res.send(user,'请求成功')
 })
 
 router.post('/login', async (req, res) => {
