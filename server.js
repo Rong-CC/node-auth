@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Author: rongcheng
+ * @@后台人员: xxx
+ * @Date: 2023-07-04 13:03:45
+ * @LastEditors: rongcheng
+ * @LastEditTime: 2023-07-12 14:56:53
+ */
 const express = require('express')
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -50,6 +58,6 @@ require('./router')(app);
 //     res.send('Hello World!')
 // })
 
-app.listen(3002, () => {
+app.listen(3001, () => {
     console.log('http://localhost:3001')
 })
