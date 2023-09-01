@@ -4,7 +4,7 @@
  * @@后台人员: xxx
  * @Date: 2023-07-04 13:03:45
  * @LastEditors: rongcheng
- * @LastEditTime: 2023-07-12 20:04:37
+ * @LastEditTime: 2023-07-12 21:02:39
  */
 const express = require('express')
 const session = require('express-session');
@@ -43,10 +43,10 @@ app.use('/static', express.static(path.join(__dirname, 'static'), opts))
 
 app.use((req, res, next) => {
     req.passport = passport // 为了在中间件中可以调用到 passport
-    res.header('Access-Control-Allow-Origin', '*');
+    // res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     
-    // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     if (req.method == 'OPTIONS') {
       return res.send(200);
     } else {

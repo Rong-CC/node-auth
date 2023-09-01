@@ -1,15 +1,25 @@
+/*
+ * @Description: 
+ * @Author: rongcheng
+ * @@后台人员: xxx
+ * @Date: 2023-07-07 20:52:51
+ * @LastEditors: rongcheng
+ * @LastEditTime: 2023-07-14 17:37:24
+ */
 const etag = require('etag');
 
 const  uploadImage  = (req, res, next) => {
-    const content = 'Hello, world!';
-   const hash = etag(content);
-    // res.set({
-    //     'ETag': hash,
-    //     'maxAge': 10000,
-    //     'CacheControl': 'public, max-age=3600'
-    //     // 'Expires':  new Date(new Date().getTime() + 60 * 1000)
-    //     // 'Cache-Control': 'no-cache',
-    //   });
+    res.set('Cache-Control', 'public, max-age=36000');
+
+    // const expirationDate = new Date();
+    // expirationDate.setHours(expirationDate.getHours() + 1);
+  
+    // // 设置 Expires 头
+    // res.setHeader('Expires', expirationDate.toUTCString());
+    
+    // const content = 'Hello, world!';
+    console.log('req', '我请求了')
+    // const hash = etag(content);
     res.json({ message: 'hello index!'});
     // const { file } = req
     // if (!file) {

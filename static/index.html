@@ -4,7 +4,7 @@
  * @@后台人员: xxx
  * @Date: 2023-07-07 21:57:44
  * @LastEditors: rongcheng
- * @LastEditTime: 2023-07-07 22:13:14
+ * @LastEditTime: 2023-07-14 17:34:16
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -15,15 +15,54 @@
     <title>缓存</title>
 </head>
 <body>
+    <div align="center">
+        账号：<input type="text" id="username" /> <br />
+        密码：<input type="password" id="password" /> <br />
+        <button onclick="check()">提交</button>
+    </div>
+
     <div>
         我是缓存
         <button  onclick='handleRefresh()'>刷新</button>
     </div>
 </body>
 <script>
+function ajaxRequest(method, url, data, successCallback, errorCallback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open(method, url, true);
+  
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        console.log(xhr)
+
+      if (xhr.status === 200) {
+        // 请求成功
+        var response = JSON.parse(xhr.responseText);
+        if (successCallback) {
+          successCallback(response);
+        }
+      } else {
+        // 请求失败
+        if (errorCallback) {
+          errorCallback(xhr.status);
+        }
+      }
+    }
+  };
+  
+  xhr.send(JSON.stringify(data));
+}
+
 function handleRefresh(){
+    ajaxRequest('GET', 'http://localhost:3001/api/file/images/upload', null, function(response) {
+        console.log('请求成功:', response);
+        }, function(errorStatus) {
+        console.log('请求失败，状态码:', errorStatus);
+        });
     // 刷新浏览器函数
-    window.location.reload()
+    // window.location.reload()
 
 }
 </script>
